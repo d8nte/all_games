@@ -27,7 +27,7 @@ print("[IDV Merged] DX8 Library loaded from GitHub OK")
 local win = DX8:CreateWindow({
     Name     = "Indo Voice",
     Subtitle = "DX8 Suite",
-    Logo     = "",          -- isi rbxassetid:// jika perlu
+    Logo     = "",
     TabWidth = 160,
     Size     = UDim2.fromOffset(580, 460),
     Acrylic  = true,
@@ -38,7 +38,7 @@ _G.DX8_MainWindow = win
 print("[IDV Merged] Window created OK")
 
 -- ════════════════════════════════════════════════════════════
---  STEP 3: IDV_mapdetector  (Map Detection)
+--  STEP 3: IDV_mapdetector
 -- ════════════════════════════════════════════════════════════
 do
 -- ============================================================
@@ -213,7 +213,7 @@ return IDV_Map
 end -- /IDV_mapdetector
 
 -- ════════════════════════════════════════════════════════════
---  STEP 4: IDV_pathfinding  (Advanced Pathfinding)
+--  STEP 4: IDV_pathfinding
 -- ════════════════════════════════════════════════════════════
 do
 -- ============================================================
@@ -571,7 +571,7 @@ return IDV_Pathfinding
 end -- /IDV_pathfinding
 
 -- ════════════════════════════════════════════════════════════
---  STEP 5: IDV_esp  (Ore & Fishing Hotspot ESP)
+--  STEP 5: IDV_esp
 -- ════════════════════════════════════════════════════════════
 do
 -- ============================================================
@@ -755,7 +755,7 @@ return IDV_ESP
 end -- /IDV_esp
 
 -- ════════════════════════════════════════════════════════════
---  STEP 6: IDV_autosell  (Auto-Sell Engine)
+--  STEP 6: IDV_autosell
 -- ════════════════════════════════════════════════════════════
 do
 -- ============================================================
@@ -1057,7 +1057,7 @@ return IDV_AutoSell
 end -- /IDV_autosell
 
 -- ════════════════════════════════════════════════════════════
---  STEP 7: IDV_mining  (Auto Mining)
+--  STEP 7: IDV_mining
 -- ════════════════════════════════════════════════════════════
 do
 local DX8 = _G.DX8_Library
@@ -2303,7 +2303,7 @@ log("IDV_mining v4 loaded — toggle ON to begin")
 end -- /IDV_mining
 
 -- ════════════════════════════════════════════════════════════
---  STEP 8: IDV_fishing  (Auto Fishing)
+--  STEP 8: IDV_fishing
 -- ════════════════════════════════════════════════════════════
 do
 local DX8 = _G.DX8_Library
@@ -3880,7 +3880,7 @@ end)
 end -- /IDV_fishing
 
 -- ════════════════════════════════════════════════════════════
---  STEP 9: Indo_Voice  (Love System + Module Core)
+--  STEP 9: Indo_Voice
 -- ════════════════════════════════════════════════════════════
 do
 local DX8 = _G.DX8_Library
@@ -3897,10 +3897,7 @@ if shared.DX8_INDOVOICE_Cleanup then
     pcall(shared.DX8_INDOVOICE_Cleanup)
 end
 
-local win = _G.DX8_MainWindow
-local DX8 = _G.DX8_Library
 
-end
 
 -- ============================================================
 -- SERVICES
