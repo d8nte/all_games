@@ -22,25 +22,21 @@ print("[IDV Merged] DX8 Library loaded from GitHub OK")
 
 -- ════════════════════════════════════════════════════════════
 --  STEP 2: Create Main Window
---  ⚙️  Sesuaikan Name/Subtitle/Logo/TabWidth jika API berbeda
+--  ⚙️  Sesuaikan Name/ToggleKey jika perlu
 -- ════════════════════════════════════════════════════════════
 local win = DX8:CreateWindow({
-    Name     = "Indo Voice",
-    Subtitle = "DX8 Suite",
-    Logo     = "",
-    TabWidth = 160,
-    Size     = UDim2.fromOffset(580, 460),
-    Acrylic  = true,
-    Theme    = "Dark",
-    MinimizeKey = Enum.KeyCode.RightControl,
+    Name      = "Indo Voice",
+    Community = "https://discord.gg/",
+    ToggleKey = Enum.KeyCode.RightControl,
 })
 _G.DX8_MainWindow = win
 print("[IDV Merged] Window created OK")
 
 -- ════════════════════════════════════════════════════════════
---  STEP 3: IDV_mapdetector
+--  IDV_mapdetector
 -- ════════════════════════════════════════════════════════════
-do
+print("[IDV] Loading IDV_mapdetector...")
+local _IDV_mapdetector_ok, _IDV_mapdetector_err = pcall(function()
 -- ============================================================
 --  IDV_mapdetector.lua — Dynamic Map Detection for Indo Voice
 --  Reads RS.Status.WorldStatus.Map (StringValue) — official game source
@@ -210,12 +206,17 @@ _G.IDV_Map = IDV_Map
 
 print("[IDV_Map] Module initialized")
 return IDV_Map
-end -- /IDV_mapdetector
-
+end)
+if not _IDV_mapdetector_ok then
+    warn("[IDV] IDV_mapdetector ERROR: " .. tostring(_IDV_mapdetector_err))
+else
+    print("[IDV] IDV_mapdetector loaded OK")
+end
 -- ════════════════════════════════════════════════════════════
---  STEP 4: IDV_pathfinding
+--  IDV_pathfinding
 -- ════════════════════════════════════════════════════════════
-do
+print("[IDV] Loading IDV_pathfinding...")
+local _IDV_pathfinding_ok, _IDV_pathfinding_err = pcall(function()
 -- ============================================================
 --  IDV_pathfinding.lua — Advanced Standalone Pathfinding Module
 --  Version 2.0: Anti-Float Jump, Realistic Ground Pathing, Deadlock Recompute
@@ -568,12 +569,17 @@ local IDV_Pathfinding = {
 _G.IDV_Pathfinding = IDV_Pathfinding
 print("[IDV_Pathfinding v2.0] Ground Pathing & Anti-Float System Ready")
 return IDV_Pathfinding
-end -- /IDV_pathfinding
-
+end)
+if not _IDV_pathfinding_ok then
+    warn("[IDV] IDV_pathfinding ERROR: " .. tostring(_IDV_pathfinding_err))
+else
+    print("[IDV] IDV_pathfinding loaded OK")
+end
 -- ════════════════════════════════════════════════════════════
---  STEP 5: IDV_esp
+--  IDV_esp
 -- ════════════════════════════════════════════════════════════
-do
+print("[IDV] Loading IDV_esp...")
+local _IDV_esp_ok, _IDV_esp_err = pcall(function()
 -- ============================================================
 --  IDV_esp.lua — Ore & Fishing Hotspot ESP / Chams Module
 --  Exposes _G.IDV_ESP: SetOreESP(bool), SetFishingESP(bool), Cleanup()
@@ -752,12 +758,17 @@ local IDV_ESP = {
 _G.IDV_ESP = IDV_ESP
 print("[IDV_ESP] Ore & Fishing ESP / Chams Module Loaded")
 return IDV_ESP
-end -- /IDV_esp
-
+end)
+if not _IDV_esp_ok then
+    warn("[IDV] IDV_esp ERROR: " .. tostring(_IDV_esp_err))
+else
+    print("[IDV] IDV_esp loaded OK")
+end
 -- ════════════════════════════════════════════════════════════
---  STEP 6: IDV_autosell
+--  IDV_autosell
 -- ════════════════════════════════════════════════════════════
-do
+print("[IDV] Loading IDV_autosell...")
+local _IDV_autosell_ok, _IDV_autosell_err = pcall(function()
 -- ============================================================
 --  IDV_autosell.lua — Smart Auto-Sell Engine with Pathfinding
 --  Pathfinds & walks to Shop NPC (OreShop or FishShop), sells items,
@@ -1054,12 +1065,17 @@ _G.IDV_AutoSell = IDV_AutoSell
 print("[IDV_AutoSell] Pathfinding Auto-Sell Engine Loaded with Dedicated Shop Tab")
 return IDV_AutoSell
 
-end -- /IDV_autosell
-
+end)
+if not _IDV_autosell_ok then
+    warn("[IDV] IDV_autosell ERROR: " .. tostring(_IDV_autosell_err))
+else
+    print("[IDV] IDV_autosell loaded OK")
+end
 -- ════════════════════════════════════════════════════════════
---  STEP 7: IDV_mining
+--  IDV_mining
 -- ════════════════════════════════════════════════════════════
-do
+print("[IDV] Loading IDV_mining...")
+local _IDV_mining_ok, _IDV_mining_err = pcall(function()
 local DX8 = _G.DX8_Library
 local win = _G.DX8_MainWindow
 -- ── SCRIPT CLEANUP ON RE-EXECUTION ───────────────────────────────────────────
@@ -2300,12 +2316,17 @@ _G.Mining = {
 }
 
 log("IDV_mining v4 loaded — toggle ON to begin")
-end -- /IDV_mining
-
+end)
+if not _IDV_mining_ok then
+    warn("[IDV] IDV_mining ERROR: " .. tostring(_IDV_mining_err))
+else
+    print("[IDV] IDV_mining loaded OK")
+end
 -- ════════════════════════════════════════════════════════════
---  STEP 8: IDV_fishing
+--  IDV_fishing
 -- ════════════════════════════════════════════════════════════
-do
+print("[IDV] Loading IDV_fishing...")
+local _IDV_fishing_ok, _IDV_fishing_err = pcall(function()
 local DX8 = _G.DX8_Library
 local win = _G.DX8_MainWindow
 -- ============================================================
@@ -3877,12 +3898,17 @@ pcall(function()
 
     shared.DX8_SaveManager = SaveManager
 end)
-end -- /IDV_fishing
-
+end)
+if not _IDV_fishing_ok then
+    warn("[IDV] IDV_fishing ERROR: " .. tostring(_IDV_fishing_err))
+else
+    print("[IDV] IDV_fishing loaded OK")
+end
 -- ════════════════════════════════════════════════════════════
---  STEP 9: Indo_Voice
+--  Indo_Voice
 -- ════════════════════════════════════════════════════════════
-do
+print("[IDV] Loading Indo_Voice...")
+local _Indo_Voice_ok, _Indo_Voice_err = pcall(function()
 local DX8 = _G.DX8_Library
 local win = _G.DX8_MainWindow
 -- ============================================================
@@ -4392,4 +4418,9 @@ targetSec:AddButton({
 
 -- ============================================================
 DX8:Notify("Indo Voice", "Module Indo Voice loaded!", 3)
-end -- /Indo_Voice
+end)
+if not _Indo_Voice_ok then
+    warn("[IDV] Indo_Voice ERROR: " .. tostring(_Indo_Voice_err))
+else
+    print("[IDV] Indo_Voice loaded OK")
+end
