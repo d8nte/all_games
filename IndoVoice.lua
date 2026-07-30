@@ -993,7 +993,7 @@ pcall(function()
     local win = _G.DX8_MainWindow
     if not DX8 or not win then return end
 
-    local shopTab    = win:CreateTab("Shop", "Shop & Auto Sell", 2)
+    local shopTab    = win:CreateTab("Shop", "Shop & Auto Sell")
     local oreShopSec = shopTab:AddSection("⛏️ Ore Shop & Auto Sell")
     local fishShopSec= shopTab:AddSection("🐟 Fish Shop & Auto Sell")
 
@@ -1942,7 +1942,7 @@ shared.DX8_Cleanup = function()
 end
 
 -- ── UI ────────────────────────────────────────────────────────────────────────
-local miningTab       = win:CreateTab("⛏️ Mining", "Automation", 1)
+local miningTab       = win:CreateTab("⛏️ Mining", "Automation")
 local controlSection  = miningTab:AddSection("Controls")
 local targetSection   = miningTab:AddSection("Target")
 local statusSection   = miningTab:AddSection("Status")
