@@ -4,15 +4,25 @@
 --  Fitur game-spesifik ada di Games/<NamaGame>.lua
 -- ============================================================
 
-local win = _G.DX8_MainWindow
-local DX8 = _G.DX8_Library
-
-if not win or not DX8 then
-    warn("[DX8 Error] Window or Library not Ready yet")
-    return
+local _DX8_LIB_URL = "https://raw.githubusercontent.com/d8nte/DX8/main/Library.lua"
+local _dx8ok, _dx8lib = pcall(function()
+    return loadstring(game:HttpGet(_DX8_LIB_URL, true))()
+end)
+if not _dx8ok or not _dx8lib then
+    error("[IDV Merged] Gagal load DX8 Library dari GitHub: " .. tostring(_dx8lib))
 end
 
-if shared.DX8_Features_Cleanup then pcall(shared.DX8_Features_Cleanup) end
+local DX8 = _dx8lib
+_G.DX8_Library = DX8
+print("[IDV Merged] DX8 Library loaded from GitHub OK")
+
+local win = DX8:CreateWindow({
+    Name      = "Indo Voice",
+    Community = "https://discord.gg/",
+    ToggleKey = Enum.KeyCode.RightControl,
+})
+_G.DX8_MainWindow = win
+print("[IDV Merged] Window created OK")
 
 -- ============================================================
 -- #14 Window State + Flag persistence
